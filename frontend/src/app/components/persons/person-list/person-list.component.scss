@@ -1,0 +1,24 @@
+.person-card, .filter-card {
+  min-width: 800px;
+  padding: 10px;
+}
+
+.persons-table, .filter-table {
+  width: 100%;
+}
+
+.persons-table tbody td, .persons-table thead th {
+  padding: 5px;
+}
+
+.actions-column {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.persons-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  min-height: 50px;
+}

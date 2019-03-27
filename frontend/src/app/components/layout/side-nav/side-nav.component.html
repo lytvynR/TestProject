@@ -1,0 +1,18 @@
+<mat-sidenav-container class="side-nav-container">
+  <mat-sidenav
+      class="side-nav"
+      #sidenav
+      opened="true"
+      [mode]="'side'"
+      [fixedInViewport]="false"
+      fixedTopGap="64"
+  >
+      <ul>
+          <li><a [routerLink]="getRouterLink(routeConstants.persons)">Persons</a></li>
+          <li><a [routerLink]="getRouterLink(routeConstants.editPerson)">Add person</a></li>
+      </ul>
+  </mat-sidenav>
+  <mat-sidenav-content class="side-nav-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

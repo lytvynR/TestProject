@@ -1,0 +1,91 @@
+<div>
+  <mat-card class="filter-card">
+    <mat-card-content>
+      <table class="filter-table">
+        <thead>
+          <tr>
+            <th>
+              <mat-form-field><input matInput type="text" placeholder="Filter by First Name" #firstNameInput (keyup)="filter(firstNameInput.value, personProps.firstName)"></mat-form-field>
+            </th>
+            <th>
+              <mat-form-field><input matInput type="text" placeholder="Filter by Last Name" #lastNameInput (keyup)="filter(lastNameInput.value, personProps.lastName)"></mat-form-field>
+            </th>
+            <th>
+              <mat-form-field><input matInput type="text" placeholder="Filter by Birth Date" #dateInput (keyup)="filter(dateInput.value, personProps.birthDate)"></mat-form-field>
+            </th>
+            <th>
+              <mat-form-field>
+                <mat-select placeholder="Filter by Gender" #genderInput (valueChange)="filter(genderInput.value, personProps.gender)">
+                  <mat-option value="">All</mat-option>
+                  <mat-option [value]="gender.male">Male</mat-option>
+                  <mat-option [value]="gender.female">Female</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <mat-form-field><input matInput type="text" placeholder="Filter by Personal Number" #numberInput (keyup)="filter(numberInput.value, personProps.personalNumber)"></mat-form-field>
+            </th>
+            <th>
+              <mat-form-field><input matInput type="text" placeholder="Filter by Salary" #salaryInput (keyup)="filter(salaryInput.value, personProps.salary)"></mat-form-field>
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-card *ngIf="!persons || persons.length === 0; else personList">
+  <mat-card-content>
+    <h4>persons list is empty</h4>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #personList>
+  <div>
+    <mat-card class="person-card">
+      <mat-card-content>
+        <table class="persons-table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Birth Date </th>
+              <th>Gender</th>
+              <th>Personal Number</th>
+              <th>Salary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let person of persons; let i = index">
+              <td>{{ person.firstName }}</td>
+              <td>{{ person.lastName }}</td>
+              <td>{{ person.birthDate }}</td>
+              <td>{{ person.gender }}</td>
+              <td>{{ person.personalNumber }}</td>
+              <td>{{ person.salary }}</td>
+              <td class="actions-column">
+                <button mat-raised-button color="primary" (click)="editPerson(person.id)">
+                  Edit
+                </button>
+                <button mat-raised-button color="primary" (click)="deletePerson(person.id)">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+      <div class="persons-footer">
+        <button mat-raised-button color="primary" (click)="getOtherPage(currentPage - 1)" [disabled]="currentPage - 1 < 0">
+        Prev
+      </button>
+      <button mat-raised-button color="primary" (click)="getOtherPage(currentPage + 1)" [disabled]="currentPage + 1 > personsCount / pageSize">
+        Next
+      </button>
+    </div>
+    </mat-card>
+  </div>
+</ng-template>

@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./styles/main";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: "Roboto", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande",
+      sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,6 @@
+.vs
+PM.Core/bin
+PM.Core/obj
+PM.Web/bin
+PM.Web/obj
+PM.Web/wwwroot
